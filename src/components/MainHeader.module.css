@@ -1,0 +1,302 @@
+/* General Header Styles */
+.topBg {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: Arial, Helvetica, sans-serif; /* 确保导航栏使用Arial字体 */
+}
+
+.topCon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.pageContainer {
+  width: 100%;
+}
+
+.topContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  margin-right: 140px; 
+  flex-shrink: 0;
+}
+
+.logoImage {
+  display: block;
+  max-height: 50px;
+  width: auto;
+  box-shadow: none;
+  background: transparent;
+}
+
+.navBg {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.tNav {
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLi {
+  margin: 0 5px;
+  position: relative;
+  min-width: 110px;
+  text-align: center;
+}
+
+.navLi:first-child {
+  margin-left: 0;
+}
+
+.navLi:last-child {
+  margin-right: 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 10px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: Arial, Helvetica, sans-serif; /* 确保导航链接使用Arial字体 */
+  font-size: 14px; /* 桌面导航栏链接字体大小 */
+}
+
+.navLink span {
+  display: inline-block;
+  line-height: 1;
+}
+
+.navLi.another .navLink {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50px;
+}
+
+.navLink:hover {
+  background-color: #f8f9fa;
+  border-radius: 50px;
+}
+
+.navLi.another .navLink:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile Header Styles */
+.phoneHeader {
+  display: none;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  font-family: Arial, Helvetica, sans-serif; /* 确保移动端头部使用Arial字体 */
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.headerTel {
+  flex-shrink: 0;
+}
+
+.mobileLogo {
+  max-height: 42px;
+  width: auto;
+}
+
+.headerMenu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 24px;
+  height: 18px;
+  justify-content: space-between;
+}
+
+.headerMenu span {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.menuOpen .headerMenu span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menuOpen .headerMenu span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuOpen .headerMenu span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation Flyout */
+.navFlyout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1002;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif; /* 确保移动端菜单使用Arial字体 */
+}
+
+.navFlyout.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.navFlyout.open .navBox {
+  transform: translateX(0);
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBox h4 {
+  margin: 40px 0 20px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.navBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navBox ul li {
+  margin-bottom: 15px;
+}
+
+.navBox ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif; /* 确保移动端导航链接使用Arial字体 */
+  font-size: 14px; /* 移动端导航栏链接字体大小 */
+}
+
+.navBox ul li a:hover {
+  color: #007bff;
+}
+
+/* Mobile Submenu Styles */
+.mobileSubmenu {
+  padding-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.mobileSubmenuLink {
+  padding: 8px 15px !important;
+  font-size: 12px !important; /* 移动端子菜单字体大小 */
+  color: #555 !important;
+}
+
+.mobileSubmenuLink:hover {
+  color: #007bff !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .topBg {
+    display: none;
+  }
+  
+  .phoneHeader {
+    display: block;
+  }
+  
+  .logo {
+    margin-right: 20px;
+  }
+  
+  .navLi {
+    min-width: 80px;
+    margin: 0 2px;
+  }
+  
+  .navLink {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navBox {
+    width: 250px;
+  }
+  
+  .topCon {
+    padding: 0 10px;
+  }
+} 

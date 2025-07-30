@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Document } from '@langchain/core/documents';
-import Navbar from './Navbar';
 import Chat from './Chat';
 import MedicalEmptyChat from './MedicalEmptyChat';
+import MainHeader from './MainHeader';
 import crypto from 'crypto';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
-import { Settings } from 'lucide-react';
-import Link from 'next/link';
 import NextError from 'next/error';
 
 export type Message = {
@@ -196,30 +194,36 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
   };
 
   return isReady ? (
-    <div>
-      {messages.length > 0 ? (
-        <>
-          <Navbar chatId={chatId!} messages={messages} />
-          <Chat
-            loading={loading}
-            messages={messages}
-            sendMessage={sendMessage}
-            messageAppeared={true}
-            rewrite={rewrite}
-            fileIds={[]}
-            setFileIds={() => {}}
-            files={[]}
-            setFiles={() => {}}
-            hideMessageInput={true}
-          />
-        </>
-      ) : (
-        <MedicalEmptyChat 
-          sendMessage={sendMessage} 
-          prefilledTitle={prefilledTitle}
-          onTitleUsed={() => setPrefilledTitle('')}
-        />
-      )}
+    <div className="bg-white min-h-screen">
+      <MainHeader />
+      <div className="pt-20">
+        {messages.length > 0 ? (
+          <>
+            <div className="max-w-screen-lg mx-auto px-4">
+              <Chat
+                loading={loading}
+                messages={messages}
+                sendMessage={sendMessage}
+                messageAppeared={true}
+                rewrite={rewrite}
+                fileIds={[]}
+                setFileIds={() => {}}
+                files={[]}
+                setFiles={() => {}}
+                hideMessageInput={true}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="max-w-screen-lg mx-auto px-4">
+            <MedicalEmptyChat 
+              sendMessage={sendMessage} 
+              prefilledTitle={prefilledTitle}
+              onTitleUsed={() => setPrefilledTitle('')}
+            />
+          </div>
+        )}
+      </div>
     </div>
   ) : (
     <div className="flex flex-row items-center justify-center min-h-screen">
