@@ -16,6 +16,7 @@ const Chat = ({
   setFileIds,
   files,
   setFiles,
+  hideMessageInput = false,
 }: {
   messages: Message[];
   sendMessage: (message: string) => void;
@@ -26,6 +27,7 @@ const Chat = ({
   setFileIds: (fileIds: string[]) => void;
   files: File[];
   setFiles: (files: File[]) => void;
+  hideMessageInput?: boolean;
 }) => {
   const [dividerWidth, setDividerWidth] = useState(0);
   const dividerRef = useRef<HTMLDivElement | null>(null);
@@ -87,7 +89,7 @@ const Chat = ({
       })}
       {loading && !messageAppeared && <MessageBoxLoading />}
       <div ref={messageEnd} className="h-0" />
-      {dividerWidth > 0 && (
+      {!hideMessageInput && dividerWidth > 0 && (
         <div
           className="bottom-24 lg:bottom-10 fixed z-40"
           style={{ width: dividerWidth }}

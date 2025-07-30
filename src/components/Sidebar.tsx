@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BookOpenText, Home, Search, SquarePen, Settings, FileText } from 'lucide-react';
+import { FileText, SquarePen, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
@@ -9,7 +9,9 @@ import Layout from './Layout';
 
 const VerticalIconContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex flex-col items-center gap-y-3 w-full">{children}</div>
+    <div className="flex flex-col items-center gap-1 flex-1">
+      {children}
+    </div>
   );
 };
 
@@ -18,28 +20,10 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
   const navLinks = [
     {
-      icon: Home,
-      href: '/',
-      active: segments.length === 0 || segments.includes('c'),
-      label: 'Home',
-    },
-    {
-      icon: Search,
-      href: '/discover',
-      active: segments.includes('discover'),
-      label: 'Discover',
-    },
-    {
-      icon: BookOpenText,
-      href: '/library',
-      active: segments.includes('library'),
-      label: 'Library',
-    },
-    {
       icon: FileText,
       href: '/medical-science',
-      active: segments.includes('medical-science'),
-      label: 'Medical Science',
+      active: segments.length === 0 || segments.includes('medical-science'),
+      label: '医学科普',
     },
   ];
 
@@ -47,9 +31,9 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
     <div>
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-20 lg:flex-col">
         <div className="flex grow flex-col items-center justify-between gap-y-5 overflow-y-auto bg-light-secondary dark:bg-dark-secondary px-2 py-8">
-          <a href="/">
+          <Link href="/medical-science">
             <SquarePen className="cursor-pointer" />
-          </a>
+          </Link>
           <VerticalIconContainer>
             {navLinks.map((link, i) => (
               <Link

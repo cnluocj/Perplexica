@@ -1,20 +1,14 @@
-import ChatWindow from '@/components/ChatWindow';
+import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Chat - Perplexica',
-  description: 'Chat with the internet, chat with Perplexica.',
+  title: '医路达医学科普写作助手',
+  description: '专业的医学科普文章生成与AI智能问答平台',
 };
 
 const Home = () => {
-  return (
-    <div>
-      <Suspense>
-        <ChatWindow />
-      </Suspense>
-    </div>
-  );
+  // 重定向到医学科普页面
+  redirect('/medical-science');
 };
 
 export default Home;
