@@ -12,6 +12,10 @@ import {
   wolframAlphaSearchRetrieverPrompt,
 } from './wolframAlpha';
 import { writingAssistantPrompt } from './writingAssistant';
+import { 
+  medicalWritingResponsePrompt, 
+  medicalWritingRetrieverPrompt 
+} from './medicalWriting';
 import {
   youtubeSearchResponsePrompt,
   youtubeSearchRetrieverPrompt,
@@ -27,6 +31,8 @@ export default {
   wolframAlphaSearchResponsePrompt,
   wolframAlphaSearchRetrieverPrompt,
   writingAssistantPrompt,
+  medicalWritingResponsePrompt,
+  medicalWritingRetrieverPrompt,
   youtubeSearchResponsePrompt,
   youtubeSearchRetrieverPrompt,
 };

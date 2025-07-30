@@ -29,6 +29,15 @@ export const searchHandlers: Record<string, MetaSearchAgent> = {
     searchWeb: false,
     summarizer: false,
   }),
+  medicalWriting: new MetaSearchAgent({
+    activeEngines: ['pubmed', 'google scholar'],
+    queryGeneratorPrompt: prompts.medicalWritingRetrieverPrompt,
+    responsePrompt: prompts.medicalWritingResponsePrompt,
+    rerank: true,
+    rerankThreshold: 0.2,
+    searchWeb: true,
+    summarizer: false,
+  }),
   wolframAlphaSearch: new MetaSearchAgent({
     activeEngines: ['wolframalpha'],
     queryGeneratorPrompt: prompts.wolframAlphaSearchRetrieverPrompt,

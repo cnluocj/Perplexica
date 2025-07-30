@@ -5,6 +5,7 @@ import {
   Pencil,
   ScanEye,
   SwatchBook,
+  Stethoscope,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -34,6 +35,12 @@ const focusModes = [
     title: 'Writing',
     description: 'Chat without searching the web',
     icon: <Pencil size={16} />,
+  },
+  {
+    key: 'medicalWriting',
+    title: 'Medical Science',
+    description: 'Specialized medical science writing',
+    icon: <Stethoscope size={20} />,
   },
   {
     key: 'wolframAlphaSearch',
