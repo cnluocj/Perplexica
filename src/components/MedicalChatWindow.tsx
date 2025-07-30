@@ -33,6 +33,9 @@ interface EmbeddingModelProvider {
 }
 
 const MedicalChatWindow = ({ id }: { id?: string }) => {
+  const searchParams = useSearchParams();
+  const newParam = searchParams.get('new');
+  
   const [chatId, setChatId] = useState<string | undefined>(id);
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -45,6 +48,22 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
       setChatId(crypto.randomBytes(20).toString('hex'));
     }
   }, []);
+
+  // 检测new参数，重置状态
+  useEffect(() => {
+    if (newParam) {
+      setMessages([]);
+      setChatId(crypto.randomBytes(20).toString('hex'));
+      setLoading(false);
+      setLastTitle('');
+      setPrefilledTitle('');
+      
+      // 清除URL参数但不触发页面刷新
+      const url = new URL(window.location.href);
+      url.searchParams.delete('new');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [newParam]);
 
   const sendMessage = async (message: string) => {
     if (loading || !chatId) return;
