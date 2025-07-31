@@ -2,15 +2,20 @@ import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import MedicalFocus from './MessageInputActions/MedicalFocus';
+import Optimization from './MessageInputActions/Optimization';
 
 const MedicalEmptyChatMessageInput = ({
   sendMessage,
   prefilledTitle = '',
   onTitleUsed = () => {},
+  optimizationMode,
+  setOptimizationMode,
 }: {
   sendMessage: (message: string) => void;
   prefilledTitle?: string;
   onTitleUsed?: () => void;
+  optimizationMode: string;
+  setOptimizationMode: (mode: string) => void;
 }) => {
   const [message, setMessage] = useState('');
   const [focusMode, setFocusMode] = useState('medicalWriting');
@@ -80,6 +85,10 @@ const MedicalEmptyChatMessageInput = ({
             <MedicalFocus focusMode={focusMode} setFocusMode={setFocusMode} />
           </div>
           <div className="flex flex-row items-center space-x-1 sm:space-x-4">
+            <Optimization
+              optimizationMode={optimizationMode}
+              setOptimizationMode={setOptimizationMode}
+            />
             <button
               disabled={message.trim().length === 0}
               className="bg-[#24A0ED] text-white disabled:text-black/50 dark:disabled:text-white/50 disabled:bg-[#e0e0dc] dark:disabled:bg-[#ececec21] hover:bg-opacity-85 transition duration-100 rounded-full p-2"

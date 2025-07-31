@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Document } from '@langchain/core/documents';
 import Chat from './Chat';
 import MedicalEmptyChat from './MedicalEmptyChat';
-import MainHeader from './MainHeader';
 import crypto from 'crypto';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
@@ -40,6 +39,7 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
   const [isReady, setIsReady] = useState(true);
   const [lastTitle, setLastTitle] = useState<string>(''); // 保存最后输入的标题
   const [prefilledTitle, setPrefilledTitle] = useState<string>(''); // 预填充的标题
+  const [optimizationMode, setOptimizationMode] = useState('balanced'); // 优化模式
 
   useEffect(() => {
     if (!chatId) {
@@ -99,7 +99,7 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
           chatId: chatId,
           files: [],
           focusMode: 'medicalWriting',
-          optimizationMode: 'speed',
+          optimizationMode: optimizationMode,
           history: [],
           systemInstructions: localStorage.getItem('systemInstructions'),
         }),
@@ -194,37 +194,30 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
   };
 
   return isReady ? (
-    <div className="bg-white min-h-screen">
-      <MainHeader />
-      <div className="pt-20">
-        {messages.length > 0 ? (
-          <>
-            <div className="max-w-screen-lg mx-auto px-4">
-              <Chat
-                loading={loading}
-                messages={messages}
-                sendMessage={sendMessage}
-                messageAppeared={true}
-                rewrite={rewrite}
-                fileIds={[]}
-                setFileIds={() => {}}
-                files={[]}
-                setFiles={() => {}}
-                hideMessageInput={true}
-              />
-            </div>
-          </>
-        ) : (
-          <div className="max-w-screen-lg mx-auto px-4">
-            <MedicalEmptyChat 
-              sendMessage={sendMessage} 
-              prefilledTitle={prefilledTitle}
-              onTitleUsed={() => setPrefilledTitle('')}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+    <>
+      {messages.length > 0 ? (
+        <Chat
+          loading={loading}
+          messages={messages}
+          sendMessage={sendMessage}
+          messageAppeared={true}
+          rewrite={rewrite}
+          fileIds={[]}
+          setFileIds={() => {}}
+          files={[]}
+          setFiles={() => {}}
+          hideMessageInput={true}
+        />
+      ) : (
+        <MedicalEmptyChat 
+          sendMessage={sendMessage} 
+          prefilledTitle={prefilledTitle}
+          onTitleUsed={() => setPrefilledTitle('')}
+          optimizationMode={optimizationMode}
+          setOptimizationMode={setOptimizationMode}
+        />
+      )}
+    </>
   ) : (
     <div className="flex flex-row items-center justify-center min-h-screen">
       <div className="text-center">
