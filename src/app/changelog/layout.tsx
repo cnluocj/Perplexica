@@ -4,8 +4,8 @@ import BetaBadge from '@/components/BetaBadge';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '医学科普写作助手 - 医职帮',
-  description: '专业的医学科普文章生成与AI智能问答平台',
+  title: '更新日志 - 医路达写作助手',
+  description: '查看医路达AI写作助手的最新功能更新和改进',
 };
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { FileText, SquarePen } from 'lucide-react';
+import { FileText, SquarePen, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import React, { useState, type ReactNode } from 'react';
@@ -58,7 +58,13 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
             ))}
           </VerticalIconContainer>
 
-          <div></div>
+          <div className="w-full">
+            <Link href="/changelog">
+              <button className="relative flex flex-row items-center justify-center cursor-pointer hover:bg-black/10 dark:hover:bg-white/10 duration-150 transition w-full py-2 rounded-lg text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white">
+                <BookOpen size={20} />
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 

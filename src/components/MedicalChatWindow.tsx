@@ -39,7 +39,7 @@ const MedicalChatWindow = ({ id }: { id?: string }) => {
   const [isReady, setIsReady] = useState(true);
   const [lastTitle, setLastTitle] = useState<string>(''); // 保存最后输入的标题
   const [prefilledTitle, setPrefilledTitle] = useState<string>(''); // 预填充的标题
-  const [optimizationMode, setOptimizationMode] = useState('balanced'); // 优化模式
+  const [optimizationMode, setOptimizationMode] = useState('speed'); // 优化模式
 
   useEffect(() => {
     if (!chatId) {
